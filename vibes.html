@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doraemon — The Cosmic 22nd Century Hub</title>
+    <!-- Tailwind CSS for modern structure -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for professional crisp icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #1a365d 0%, #0f172a 100%);
+            color: #f8fafc;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* High-End Glassmorphism Mixins */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* 3D Interactive Anywhere Door Mechanics */
+        .door-environment {
+            perspective: 1200px;
+        }
+
+        .door-frame {
+            border: 10px solid #ff4d6d;
+            box-shadow: 0 0 30px rgba(255, 77, 109, 0.4), inset 0 0 15px rgba(255, 77, 109, 0.3);
+            background: radial-gradient(circle, #ec4899 0%, #3b82f6 100%);
+            background-size: 200% 200%;
+            animation: cosmicWarp 6s ease infinite;
+        }
+
+        @keyframes cosmicWarp {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .door-leaf {
+            background: #ff5c7c;
+            transform-origin: left center;
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotateY(0deg);
+            box-shadow: inset -5px 0 10px rgba(0,0,0,0.2);
+        }
+
+        .door-container.open .door-leaf {
+            transform: rotateY(-135deg);
+            box-shadow: 5px 0 25px rgba(0,0,0,0.5);
+        }
+
+        /* Custom Animations */
+        .floating-bell {
+            animation: subtleFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+
+        /* Back to top button */
+        #backToTop {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 9999px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 60;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #backToTop.visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-blue-500 selection:text-white">
+
+    <!-- Premium Navigation Suite -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 text-2xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-amber-400">
+                <i class="fa-solid fa-bell text-amber-400 floating-bell text-xl"></i> DORAEMON
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 font-medium tracking-wide text-sm text-slate-300">
+                <a href="#home" class="hover:text-blue-400 transition-colors">Home</a>
+                <a href="#about" class="hover:text-blue-400 transition-colors">Lore</a>
+                <a href="#characters" class="hover:text-blue-400 transition-colors">Timeline</a>
+                <a href="#pocket" class="hover:text-blue-400 transition-colors">4D Matrix</a>
+                <a href="#music" class="hover:text-blue-400 transition-colors">Audio Vault</a>
+                <a href="#funfacts" class="hover:text-blue-400 transition-colors">Fun Facts</a>
+                <a href="#quiz" class="hover:text-blue-400 transition-colors">Quiz</a>
+            </div>
+
+            <button onclick="document.getElementById('pocket').scrollIntoView();" class="glass-panel px-5 py-2.5 rounded-full text-xs font-bold text-blue-400 hover:text-white hover:bg-blue-600/30 transition-all duration-300 tracking-widest uppercase">
+                Initialize Pocket
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Hero Workspace Layout -->
+    <header id="home" class="pt-32 min-h-screen max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12 relative">
+        
+        <!-- Left Hero Content Column -->
+        <div class="flex-1 space-y-6 z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel text-xs font-semibold tracking-wider text-blue-400 uppercase">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> 22nd Century Cybernetic Organism
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-none">
+                Welcome to the World <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">of Doraemon</span>
+            </h1>
+            <p class="text-slate-400 text-lg leading-relaxed max-w-xl">
+                Step into a high-fidelity portal dedicated to MS-903, the legendary multi-functional robotic cat. Blending advanced chronological engineering with unforgettable narrative tapestries.
+            </p>
+            
+            <!-- Direct Core CTA Actions -->
+            <div class="pt-4 flex flex-wrap gap-4">
+                <button onclick="document.getElementById('pocket').scrollIntoView();" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400 rounded-xl font-semibold shadow-lg shadow-blue-500/20 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-3">
+                    <i class="fa-solid fa-vault"></i> Access Pocket of Doraemon
+                </button>
+                <button onclick="document.getElementById('music').scrollIntoView();" class="px-8 py-4 glass-panel hover:bg-white/10 rounded-xl font-semibold transform hover:-translate-y-0.5 transition-all duration-200">
+                    Listen to Tracks
+                </button>
+                <button onclick="revealRandomGadget()" class="px-8 py-4 bg-gradient-to-r from-pink-500 to-amber-400 hover:from-pink-400 hover:to-amber-300 rounded-xl font-semibold shadow-lg shadow-pink-500/20 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-3 text-slate-900">
+                    <i class="fa-solid fa-shuffle"></i> Surprise Me: Random Gadget
+                </button>
+            </div>
+
+            <!-- New Feature: Random Gadget Result Display -->
+            <div id="randomGadgetResult" class="hidden glass-panel rounded-xl p-5 max-w-xl border border-pink-400/30">
+                <p class="text-xs font-bold text-pink-400 uppercase tracking-widest mb-1">Randomly Selected Gadget</p>
+                <p id="randomGadgetText" class="text-slate-200 font-semibold"></p>
+            </div>
+        </div>
+
+        <!-- Right Side Graphic Interactive Zone -->
+        <div class="flex-1 w-full flex flex-col sm:flex-row items-center justify-center gap-12 lg:justify-end">
+            
+            <!-- Dynamic Main Abstract Character Banner Showcase -->
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-amber-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                <div class="relative w-72 h-96 rounded-2xl overflow-hidden glass-panel flex flex-col justify-between p-6">
+                    <div class="w-full flex justify-between items-center">
+                        <span class="text-xs font-bold text-slate-500 tracking-widest">SERIES MS-903</span>
+                        <i class="fa-solid fa-bell text-amber-400 text-lg floating-bell"></i>
+                    </div>
+                    <!-- Styled Abstract Visual Component Mocking Premium Canvas Artwork -->
+                    <div class="w-40 h-40 mx-auto bg-gradient-to-b from-blue-500 via-sky-400 to-white rounded-full relative flex items-center justify-center shadow-inner">
+                        <div class="w-32 h-32 bg-white rounded-full absolute bottom-0 flex flex-col items-center justify-center pt-4">
+                            <div class="w-4 h-3 bg-red-500 rounded-full mb-1"></div>
+                            <div class="w-16 h-12 border-b-4 border-slate-800 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-1 text-center">
+                        <h4 class="font-bold text-lg tracking-wide">Doraemon (ドラえもん)</h4>
+                        <p class="text-xs text-blue-400">Temporal Agent & Guardian</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactivity Feature: Interactive Anywhere Door Component -->
+            <div class="flex flex-col items-center gap-4">
+                <span class="text-xs font-bold text-pink-400 tracking-widest uppercase"><i class="fa-solid fa-hand-pointer animate-bounce mr-1"></i> Click to Travel</span>
+                <div id="anywhereDoor" class="door-container door-environment relative w-48 h-80 cursor-pointer" onclick="this.classList.toggle('open')">
+                    <div class="door-frame w-full h-full rounded-lg relative overflow-hidden flex items-center justify-center">
+                        <!-- Space-Warping Inner Portal Display -->
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+                            <i class="fa-solid fa-user-astronaut text-white/40 text-2xl mb-2 animate-pulse"></i>
+                            <span class="text-[10px] uppercase tracking-widest font-bold text-white/70">Dimension Gate Active</span>
+                        </div>
+                        <!-- Movable Structural Door Panel -->
+                        <div class="door-leaf absolute top-0 left-0 w-full h-full rounded-sm p-4 flex flex-col justify-between items-end border-2 border-[#ff3355]">
+                            <div class="w-full h-full border border-pink-400/30 rounded-sm relative">
+                                <!-- Minimal Brass Handle Fixture -->
+                                <div class="w-4 h-4 bg-amber-400 rounded-full absolute right-2 top-1/2 transform -translate-y-1/2 shadow-md border border-amber-600"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 italic">The Anywhere Door (どこでもドア)</p>
+            </div>
+
+        </header>
+
+    <!-- Contextual Information Briefing Display -->
+    <section id="about" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="glass-panel rounded-3xl p-8 md:p-12 grid md:grid-cols-3 gap-8 items-center">
+            <div class="space-y-3">
+                <h6 class="text-xs font-extrabold tracking-widest text-blue-400 uppercase">Historical Matrix</h6>
+                <h2 class="text-3xl font-bold tracking-tight">The Century <br>Origins</h2>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Created by legendary mangaka duo Fujiko F. Fujio, Doraemon traveled back from the 22nd century to rescue Nobita Nobi from a cycle of perpetual misfortune.
+                </p>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl space-y-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold">01</div>
+                <h3 class="font-semibold text-lg text-slate-200">The 4D Secret Pocket</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">Attaches straight to infinite higher-dimensional space-time, harboring thousands of futuristic technological marvels.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl space-y-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold">02</div>
+                <h3 class="font-semibold text-lg text-slate-200">The Mission Directive</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">Using advanced technology responsibly, fostering moral development, resilience, and true friendship across history.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Primary Characters Matrix Profile Section -->
+    <section id="characters" class="py-20 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Core Personnel Ledger</h2>
+            <p class="text-slate-400 text-sm">A look at the iconic characters of the series.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Nobita Card Matrix Grid Component -->
+            <div class="glass-panel rounded-2xl overflow-hidden group hover:border-blue-500/30 transition-all duration-300">
+                <div class="h-48 bg-gradient-to-br from-amber-500/20 to-orange-600/10 p-6 flex items-center justify-center relative">
+                    <div class="w-24 h-24 rounded-full border-4 border-amber-400 flex items-center justify-center bg-slate-900 text-4xl text-amber-400 font-bold">N</div>
+                </div>
+                <div class="p-6 space-y-2">
+                    <h4 class="font-bold text-lg group-hover:text-blue-400 transition-colors">Nobita Nobi</h4>
+                    <p class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Primary Protagonist</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">An underachieving but deeply compassionate boy whose future requires systemic adjustments via tech intervention.</p>
+                </div>
+            </div>
+
+            <!-- Shizuka Card Matrix Grid Component -->
+            <div class="glass-panel rounded-2xl overflow-hidden group hover:border-blue-500/30 transition-all duration-300">
+                <div class="h-48 bg-gradient-to-br from-pink-500/20 to-rose-600/10 p-6 flex items-center justify-center relative">
+                    <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center bg-slate-900 text-4xl text-pink-400 font-bold">S</div>
+                </div>
+                <div class="p-6 space-y-2">
+                    <h4 class="font-bold text-lg group-hover:text-blue-400 transition-colors">Shizuka Minamoto</h4>
+                    <p class="text-xs font-semibold text-pink-400 uppercase tracking-wider">Voice of Reason</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Smart, highly disciplined, and environmentally conscious. She stands as the primary anchor of empathy in the team.</p>
+                </div>
+            </div>
+
+            <!-- Suneo Card Matrix Grid Component -->
+            <div class="glass-panel rounded-2xl overflow-hidden group hover:border-blue-500/30 transition-all duration-300">
+                <div class="h-48 bg-gradient-to-br from-teal-500/20 to-emerald-600/10 p-6 flex items-center justify-center relative">
+                    <div class="w-24 h-24 rounded-full border-4 border-teal-400 flex items-center justify-center bg-slate-900 text-4xl text-teal-400 font-bold">SU</div>
+                </div>
+                <div class="p-6 space-y-2">
+                    <h4 class="font-bold text-lg group-hover:text-blue-400 transition-colors">Suneo Honekawa</h4>
+                    <p class="text-xs font-semibold text-teal-400 uppercase tracking-wider">Material Analyst</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Affluent and highly opportunistic. Possesses advanced knowledge of contemporary mechanics and material assets.</p>
+                </div>
+            </div>
+
+            <!-- Takeshi Card Matrix Grid Component -->
+            <div class="glass-panel rounded-2xl overflow-hidden group hover:border-blue-500/30 transition-all duration-300">
+                <div class="h-48 bg-gradient-to-br from-red-500/20 to-orange-600/10 p-6 flex items-center justify-center relative">
+                    <div class="w-24 h-24 rounded-full border-4 border-red-500 flex items-center justify-center bg-slate-900 text-4xl text-red-500 font-bold">G</div>
+                </div>
+                <div class="p-6 space-y-2">
+                    <h4 class="font-bold text-lg group-hover:text-blue-400 transition-colors">Takeshi "Gian" Goda</h4>
+                    <p class="text-xs font-semibold text-red-400 uppercase tracking-wider">Enforcer Unit</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Possesses intense physical dominance and a volatile temper, yet acts as a shield for the group in critical scenarios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gadget Matrix Pocket Section Display Area -->
+    <section id="pocket" class="py-24 bg-slate-950/40 border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-xs font-semibold tracking-wider text-blue-400 uppercase">
+                        Quantum Repository Catalog
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">The 4D Gadget Registry</h2>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md">
+                    Explore individual operational breakdowns of high-tier devices regularly pulled directly from the 4th-dimensional spatial pocket.
+                </p>
+            </div>
+
+            <!-- Gadget Card Interactivity Platform Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Gadget Card Item 1 -->
+                <div class="glass-panel p-8 rounded-2xl space-y-6 hover:bg-white/[0.05] transition-all duration-300 relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-sky-400 flex items-center justify-center text-2xl text-slate-900">
+                        <i class="fa-solid fa-fan animate-spin" style="animation-duration: 8s;"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-slate-100">Hopter (タケコプター)</h3>
+                        <p class="text-xs font-semibold tracking-widest text-sky-400 uppercase">Spatial Propulsion</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            A micro-propeller that attaches to the cranium, linking directly with synapses to provide effortless flight via kinetic neural synchronization.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Gadget Card Item 2 -->
+                <div class="glass-panel p-8 rounded-2xl space-y-6 hover:bg-white/[0.05] transition-all duration-300 relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-400 flex items-center justify-center text-2xl text-slate-900">
+                        <i class="fa-solid fa-door-open"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-slate-100">Anywhere Door (どこでもドア)</h3>
+                        <p class="text-xs font-semibold tracking-widest text-pink-400 uppercase">Quantum Teleportation</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Folds continuous space-time mapping layouts instantly upon turning the handle, opening a path to any coordinates within a 10-light-year radius.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Gadget Card Item 3 -->
+                <div class="glass-panel p-8 rounded-2xl space-y-6 hover:bg-white/[0.05] transition-all duration-300 relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-400 flex items-center justify-center text-2xl text-slate-900">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-slate-100">Time Cloth (タイムふろしき)</h3>
+                        <p class="text-xs font-semibold tracking-widest text-amber-400 uppercase">Chronological Reversal</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            A smart fabric that changes the temporal state of wrapped items, advancing or reversing their physical timeline depending on which side face is used.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Media & Audio Vault Stream Section -->
+    <section id="music" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Audio Engineering & Themes</h2>
+            <p class="text-slate-400 text-sm">Listen to curated compositions from across the historical franchise.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto glass-panel rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+            <!-- Active Functional Track Card Interface Component Row -->
+            <div class="flex flex-col sm:flex-row items-center gap-6 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <div class="w-16 h-16 rounded-xl bg-blue-600 flex items-center justify-center text-2xl shadow-md text-slate-900">
+                    <i class="fa-solid fa-music"></i>
+                </div>
+                <div class="flex-1 text-center sm:text-left space-y-1">
+                    <h4 class="font-bold text-lg text-slate-200" id="current-title">Doraemon no Uta (Classic Theme)</h4>
+                    <p class="text-xs text-slate-500">Orchestral Master Version — 22nd Century Records</p>
+                </div>
+                <!-- Controls Integration Layout Panel -->
+                <div class="flex items-center gap-4">
+                    <button id="playBtn" onclick="togglePlay()" class="w-12 h-12 rounded-full bg-blue-500 hover:bg-blue-400 text-slate-950 flex items-center justify-center text-lg transition-all duration-200 shadow-lg shadow-blue-500/20">
+                        <i class="fa-solid fa-play ml-1" id="playIcon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Alternative Sequential Playlist Item Elements -->
+            <div class="space-y-2">
+                <div onclick="selectTrack('Doraemon no Uta (Classic Theme)', this)" class="flex items-center justify-between p-4 rounded-lg hover:bg-white/[0.04] transition-colors cursor-pointer border border-transparent hover:border-white/5 text-blue-400 bg-white/[0.02]">
+                    <span class="text-sm font-medium text-slate-300 flex items-center gap-3">
+                        <i class="fa-solid fa-volume-high text-xs text-blue-400"></i> 1. Doraemon no Uta (Classic Main Theme)
+                    </span>
+                    <span class="text-xs text-slate-500 font-mono">03:12</span>
+                </div>
+                <div onclick="selectTrack('Boku Doraemon (Futuristic Synthesis)', this)" class="flex items-center justify-between p-4 rounded-lg hover:bg-white/[0.04] transition-colors cursor-pointer border border-transparent hover:border-white/5">
+                    <span class="text-sm font-medium text-slate-300 flex items-center gap-3">
+                        <i class="fa-solid fa-play text-xs text-slate-600"></i> 2. Boku Doraemon (Futuristic Synthesis)
+                    </span>
+                    <span class="text-xs text-slate-500 font-mono">02:45</span>
+                </div>
+                <div onclick="selectTrack('Yume wo Kanaete Doraemon', this)" class="flex items-center justify-between p-4 rounded-lg hover:bg-white/[0.04] transition-colors cursor-pointer border border-transparent hover:border-white/5">
+                    <span class="text-sm font-medium text-slate-300 flex items-center gap-3">
+                        <i class="fa-solid fa-play text-xs text-slate-600"></i> 3. Yume wo Kanaete Doraemon (Modern Mix)
+                    </span>
+                    <span class="text-xs text-slate-500 font-mono">04:02</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Fun Facts -->
+    <section id="funfacts" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Fun Facts</h2>
+            <p class="text-slate-400 text-sm">Bite-sized trivia pulled from the archives.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="glass-panel p-6 rounded-2xl space-y-3">
+                <i class="fa-solid fa-ear-listen text-blue-400 text-xl"></i>
+                <p class="text-slate-300 text-sm leading-relaxed">Doraemon's ears were originally round — a mouse chewed them off, which is why he's afraid of mice.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl space-y-3">
+                <i class="fa-solid fa-palette text-amber-400 text-xl"></i>
+                <p class="text-slate-300 text-sm leading-relaxed">He was blue-and-white originally, but turned fully blue after crying, which washed off his yellow paint.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl space-y-3">
+                <i class="fa-solid fa-cookie-bite text-pink-400 text-xl"></i>
+                <p class="text-slate-300 text-sm leading-relaxed">His favorite food is dorayaki, a red-bean-filled pancake sandwich — he'll do almost anything for one.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl space-y-3">
+                <i class="fa-solid fa-boxes-stacked text-teal-400 text-xl"></i>
+                <p class="text-slate-300 text-sm leading-relaxed">The 4D pocket is said to store well over a thousand different gadgets across the full franchise.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl space-y-3">
+                <i class="fa-solid fa-calendar-day text-red-400 text-xl"></i>
+                <p class="text-slate-300 text-sm leading-relaxed">Doraemon's "birthday" (manufacture date) is listed as September 3, 2112.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl space-y-3">
+                <i class="fa-solid fa-earth-asia text-sky-400 text-xl"></i>
+                <p class="text-slate-300 text-sm leading-relaxed">The series has been translated and broadcast in dozens of countries and languages worldwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Interactive Gadget Quiz -->
+    <section id="quiz" class="py-24 bg-slate-950/40 border-y border-white/5">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Which Gadget Suits You?</h2>
+                <p class="text-slate-400 text-sm">Answer one question and find out.</p>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-8 space-y-6">
+                <p class="text-slate-200 font-semibold text-lg">If you could solve one problem instantly, what would it be?</p>
+                <div class="grid sm:grid-cols-3 gap-4">
+                    <button onclick="showQuizResult('travel')" class="glass-panel p-4 rounded-xl hover:bg-white/10 transition-all duration-200 text-sm font-medium">
+                        <i class="fa-solid fa-plane block mb-2 text-sky-400 text-xl"></i> Getting anywhere instantly
+                    </button>
+                    <button onclick="showQuizResult('mistake')" class="glass-panel p-4 rounded-xl hover:bg-white/10 transition-all duration-200 text-sm font-medium">
+                        <i class="fa-solid fa-rotate-left block mb-2 text-amber-400 text-xl"></i> Undoing a mistake
+                    </button>
+                    <button onclick="showQuizResult('fly')" class="glass-panel p-4 rounded-xl hover:bg-white/10 transition-all duration-200 text-sm font-medium">
+                        <i class="fa-solid fa-feather block mb-2 text-pink-400 text-xl"></i> Flying freely
+                    </button>
+                </div>
+                <div id="quizResult" class="hidden mt-4 p-5 rounded-xl bg-white/[0.04] border border-white/10">
+                    <p class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-1">Your Match</p>
+                    <p id="quizResultText" class="text-slate-200 font-semibold"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Professional Footer Node -->
+    <footer class="border-t border-white/5 bg-slate-950/60 py-12 text-center text-xs text-slate-500 tracking-wide">
+        <p>&copy; 2026 Doraemon Hub Portal. Formulated with glassmorphic structural specifications. For analytical review.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'});" class="glass-panel text-blue-400 hover:text-white hover:bg-blue-600/40" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Core Functional JavaScript Logic Controller -->
+    <script>
+        // Track Scroll State to Add Depth Styling to Navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-4', 'bg-slate-950/90');
+                nav.classList.remove('py-0');
+            } else {
+                nav.classList.remove('py-4', 'bg-slate-950/90');
+            }
+
+            // Toggle back-to-top button visibility
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Modular Mock Audio Controller Interface Realization logic
+        let isPlaying = false;
+        function togglePlay() {
+            const icon = document.getElementById('playIcon');
+            const button = document.getElementById('playBtn');
+            isPlaying = !isPlaying;
+            
+            if(isPlaying) {
+                icon.className = 'fa-solid fa-pause';
+                button.classList.add('bg-amber-400', 'shadow-amber-500/20');
+                button.classList.remove('bg-blue-500', 'shadow-blue-500/20');
+            } else {
+                icon.className = 'fa-solid fa-play ml-1';
+                button.classList.remove('bg-amber-400', 'shadow-amber-500/20');
+                button.classList.add('bg-blue-500', 'shadow-blue-500/20');
+            }
+        }
+
+        // New Feature: Random Gadget Picker
+        const gadgetList = [
+            "Hopter (タケコプター) — a head-mounted propeller for effortless flight.",
+            "Anywhere Door (どこでもドア) — opens instantly to any destination.",
+            "Time Cloth (タイムふろしき) — wraps objects to age or de-age them.",
+            "Small Light (スモールライト) — shrinks anything it shines on.",
+            "Translation Jelly (ほんやくコンニャク) — eat it to understand any language instantly."
+        ];
+        function revealRandomGadget() {
+            const pick = gadgetList[Math.floor(Math.random() * gadgetList.length)];
+            const resultBox = document.getElementById('randomGadgetResult');
+            document.getElementById('randomGadgetText').innerText = pick;
+            resultBox.classList.remove('hidden');
+        }
+
+        // New Feature: Gadget Quiz Logic
+        const quizAnswers = {
+            travel: "The Anywhere Door — you value getting exactly where you need to be, instantly.",
+            mistake: "The Time Cloth — you'd rather rewind and fix things than live with regret.",
+            fly: "The Hopter — you're all about freedom and moving through the world on your own terms."
+        };
+        function showQuizResult(choice) {
+            const resultBox = document.getElementById('quizResult');
+            document.getElementById('quizResultText').innerText = quizAnswers[choice];
+            resultBox.classList.remove('hidden');
+        }
+
+        function selectTrack(trackName, element) {
+            document.getElementById('current-title').innerText = trackName;
+            
+            // Reset state layouts visually
+            const listItems = element.parentNode.children;
+            for(let item of listItems) {
+                item.classList.remove('text-blue-400', 'bg-white/[0.02]');
+                const icon = item.querySelector('i');
+                icon.className = 'fa-solid fa-play text-xs text-slate-600';
+            }
+            
+            // Activate current selection visual states
+            element.classList.add('text-blue-400', 'bg-white/[0.02]');
+            element.querySelector('i').className = 'fa-solid fa-volume-high text-xs text-blue-400';
+            
+            // Force dynamic activation response kick-in
+            isPlaying = false;
+            togglePlay();
+        }
+    </script>
+</body>
+</html>
